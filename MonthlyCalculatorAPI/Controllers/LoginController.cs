@@ -12,10 +12,12 @@ namespace MonthlyCalculatorAPI.Controllers
     public class LoginController : ControllerBase
     {
         private ILoginService _loginService;
+        private IAccountService _accountService;
 
-        public LoginController(ILoginService loginService)
+        public LoginController(ILoginService loginService, IAccountService accountService)
         {
             _loginService = loginService;
+            _accountService = accountService;
         }
 
         [HttpPost("authenticate")]
@@ -34,7 +36,12 @@ namespace MonthlyCalculatorAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok("users");
+            var result = _accountService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

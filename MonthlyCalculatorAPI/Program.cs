@@ -15,9 +15,30 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<MonthlyCalculatorDbContext>();
-//builder.Services.AddScoped<IAccountService, AccountService>();
+
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IGenderRepository, GenderRepository>();
+builder.Services.AddScoped<IGenderService, GenderService>();
+
+builder.Services.AddScoped<IExpenceRepository, ExpenceRepository>();
+builder.Services.AddScoped<IExpenceTypeRepository, ExpenceTypeRepository>();
+builder.Services.AddScoped<IExpenceHistoryRepository, ExpenceHistoryRepository>();
+builder.Services.AddScoped<IExpenceService, ExpenceService>();
+builder.Services.AddScoped<IExpenceTypeService, ExpenceTypeService>();
+builder.Services.AddScoped<IExpenceHistoryService, ExpenceHistoryService>();
+
+builder.Services.AddScoped<ISalaryRepository, SalaryRepository>();
+builder.Services.AddScoped<ISalaryTypeRepository, SalaryTypeRepository>();
+builder.Services.AddScoped<ISalaryHistoryRepository, SalaryHistoryRepository>();
+builder.Services.AddScoped<ISalaryService, SalaryService>();
+builder.Services.AddScoped<ISalaryTypeService, SalaryTypeService>();
+builder.Services.AddScoped<ISalaryHistoryService, SalaryHistoryService>();
+
+
 
 var app = builder.Build();
 
