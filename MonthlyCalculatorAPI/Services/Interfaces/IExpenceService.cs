@@ -16,7 +16,6 @@ namespace MonthlyCalculatorAPI.Services.Interfaces
         IDataResult<List<Expence>> GetAllExpenceAmountByDes(decimal amount);
         IDataResult<List<Expence>> GetAllExpenceAmountByASC(decimal amount);
         IDataResult<List<Expence>> GetAllExpenceByTypeName(string typeName);
-        IDataResult<List<Expence>> GetAllExpenceByHistoryName(string historyName);
         IDataResult<List<Expence>> GetAllExpenceBetweenValues(decimal minValue, decimal maxValue);
        
     }

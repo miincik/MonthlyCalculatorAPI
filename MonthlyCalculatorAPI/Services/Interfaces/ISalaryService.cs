@@ -16,7 +16,6 @@ namespace MonthlyCalculatorAPI.Services.Interfaces
         IDataResult<List<Salary>> GetAllSalaryAmountByDes(decimal amount);
         IDataResult<List<Salary>> GetAllSalaryAmountByASC(decimal amount);
         IDataResult<List<Salary>> GetAllSalaryByTypeName(string typeName);
-        IDataResult<List<Salary>> GetAllSalaryByHistoryName(string historyName);
         IDataResult<List<Salary>> GetAllSalaryBetweenValues(decimal minValue, decimal maxValue);
     }
 }

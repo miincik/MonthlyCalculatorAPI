@@ -11,6 +11,6 @@ namespace MonthlyCalculatorAPI.Services.Interfaces
         IResult Delete(ExpenceHistory expenceHistory);
         IResult Update(ExpenceHistory expenceHistory);
         IDataResult<List<ExpenceHistory>> GetAll();
-        IDataResult<ExpenceHistory> GetById(int eexpenceHistoryId);
+        IDataResult<ExpenceHistory> GetById(int expenceHistoryId);
     }
 }
