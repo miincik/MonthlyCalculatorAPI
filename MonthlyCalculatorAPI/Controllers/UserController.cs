@@ -7,18 +7,15 @@ namespace MonthlyCalculatorAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : GenericBaseController<Account,IAccountService>
+    public class UserController : GenericBaseController<User, IUserService>
     {
-
-        public AccountController(IAccountService accountService) : base(accountService)
+        public UserController(IUserService userService) : base(userService)
         {
-
         }
-        
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            return base.GetResponseByResultSuccess(base._service.GetAll());
+            return base.GetResponseByResultSuccess(base._service.GetAll()); 
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)

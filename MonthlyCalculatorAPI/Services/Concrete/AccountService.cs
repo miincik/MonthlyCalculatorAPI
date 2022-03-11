@@ -49,7 +49,7 @@ namespace MonthlyCalculatorAPI.Services.Concrete
 
         public Utilities.Results.IResult Update(Account account)
         {
-            var result = _accountRepository.Get(e => e.Email == account.Email);
+            var result = _accountRepository.Get(e => e.Id == account.Id);
             if (result != null)
             {
                 _accountRepository.Update(account);

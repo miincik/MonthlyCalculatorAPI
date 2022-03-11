@@ -1,14 +1,11 @@
 ﻿using MonthlyCalculatorAPI.Models.Entities.Incomes;
 using MonthlyCalculatorAPI.Utilities.Results;
-using IResult = MonthlyCalculatorAPI.Utilities.Results.IResult;
+
 
 namespace MonthlyCalculatorAPI.Services.Interfaces
 {
-    public interface ISalaryService
+    public interface ISalaryService : IServiceBase<Salary>
     {
-        IResult Add(Salary salary);
-        IResult Delete(Salary salary);
-        IResult Update(Salary salary);
         IDataResult<List<Salary>> GetAll();
         IDataResult<Salary> GetById(int salaryId);
         IDataResult<Salary> GetByTypeId(int typeId);
