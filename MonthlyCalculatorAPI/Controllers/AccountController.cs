@@ -45,7 +45,7 @@ namespace MonthlyCalculatorAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("delete")]
+        [HttpPut("delete")]
         public IActionResult Delete(Account account)
         {
             var result = _accountService.Delete(account);
@@ -55,7 +55,7 @@ namespace MonthlyCalculatorAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("Update")]
+        [HttpPut("Update")]
         public IActionResult Update(Account account)
         {
             var result = _accountService.Update(account);
