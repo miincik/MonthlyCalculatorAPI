@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Utilities\Helpers\" />
-    <Folder Include="Utilities\Validators\" />
   </ItemGroup>
 
 </Project>

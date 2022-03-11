@@ -20,7 +20,7 @@ namespace MonthlyCalculatorAPI.Controllers
             _accountService = accountService;
         }
 
-        [HttpPost("authenticate")]
+        [HttpPost("login")]
         public IActionResult Authenticate(LoginDTO model)
         {
             var response = _loginService.Authenticate(model);
