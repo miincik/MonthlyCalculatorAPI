@@ -34,7 +34,8 @@ namespace MonthlyCalculatorAPI.Services.Concrete
 
         public IDataResult<Account> findAccountById(int id)
         {
-            return new SuccessDataResult<Account>(_accountRepository.Get(e => e.Id == id));
+            var result = _accountRepository.Get(e => e.Id == id);
+            return new SuccessDataResult<Account>(result);
         }
 
         private string generateJwtToken(Account account)
@@ -44,7 +45,7 @@ namespace MonthlyCalculatorAPI.Services.Concrete
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("id", account.Id.ToString()) }),
-                Expires = DateTime.UtcNow.AddDays(15),
+                Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using static MonthlyCalculatorAPI.Utilities.Security.AppSettings;
+using MonthlyCalculatorAPI.Utilities.Security;
 
 namespace MonthlyCalculatorAPI.Utilities.Validators
 {

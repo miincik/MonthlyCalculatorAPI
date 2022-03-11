@@ -1,6 +1,6 @@
 ﻿using MonthlyCalculatorAPI.Models.Entities;
 using MonthlyCalculatorAPI.Utilities.Results;
-using static MonthlyCalculatorAPI.Utilities.Security.AppSettings;
+using MonthlyCalculatorAPI.Utilities.Security;
 
 namespace MonthlyCalculatorAPI.Services.Interfaces
 {

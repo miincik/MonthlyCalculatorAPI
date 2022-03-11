@@ -1,6 +1,6 @@
 ﻿namespace MonthlyCalculatorAPI.Utilities.Security
 {
-    public partial class AppSettings
+    public class AppSettings
     {
         public string Secret { get; set; }
     }

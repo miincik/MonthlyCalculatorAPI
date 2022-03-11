@@ -9,7 +9,8 @@ namespace MonthlyCalculatorAPI.Utilities.Security
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var AccountFromContext = (Account)context.HttpContext.Items["Account"];
+            
+            var AccountFromContext = (Account?)context.HttpContext.Items["Account"];
             if (AccountFromContext == null)
             {
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
