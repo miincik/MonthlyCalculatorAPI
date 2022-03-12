@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using MonthlyCalculatorAPI.Models.Entities;
 using MonthlyCalculatorAPI.Repositories.EntityFramework.Interfaces;
 using MonthlyCalculatorAPI.Services.Interfaces;
+using MonthlyCalculatorAPI.Utilities.Logger;
 using MonthlyCalculatorAPI.Utilities.Results;
 using MonthlyCalculatorAPI.Utilities.Security;
 using System.IdentityModel.Tokens.Jwt;
@@ -22,7 +23,7 @@ namespace MonthlyCalculatorAPI.Services.Concrete
             _appSettings = appSettings.Value;
             this._accountRepository = accountRepository;
         }
-
+        [LogAspect(typeof(FileLogger))]
         public IDataResult<LoginResponseDTO> Authenticate(LoginDTO model)
         {
             var Account = _accountRepository.Get(e => e.Email == model.Email && e.Password == model.Password);

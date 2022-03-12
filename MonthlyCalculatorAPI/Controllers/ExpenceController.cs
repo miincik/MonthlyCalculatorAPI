@@ -1,8 +1,7 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MonthlyCalculatorAPI.Models.Entities.Expences;
 using MonthlyCalculatorAPI.Services.Interfaces;
-
+using MonthlyCalculatorAPI.Utilities.Security;
 
 namespace MonthlyCalculatorAPI.Controllers
 {
@@ -16,7 +15,7 @@ namespace MonthlyCalculatorAPI.Controllers
         {
             
         }
-
+        [Authorize]
         [HttpGet("getall")]
         public IActionResult GetAll()
         {

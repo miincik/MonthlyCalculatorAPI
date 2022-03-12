@@ -1,10 +1,13 @@
+using Castle.DynamicProxy;
 using FluentValidation.AspNetCore;
 using MonthlyCalculatorAPI.Contexts;
 using MonthlyCalculatorAPI.Repositories.EntityFramework.Concrete;
 using MonthlyCalculatorAPI.Repositories.EntityFramework.Interfaces;
 using MonthlyCalculatorAPI.Services.Concrete;
 using MonthlyCalculatorAPI.Services.Interfaces;
+using MonthlyCalculatorAPI.Utilities.Intercaptors;
 using MonthlyCalculatorAPI.Utilities.Security;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,7 @@ builder.Services.AddControllers().AddFluentValidation(opt =>
 {
     opt.RegisterValidatorsFromAssemblyContaining<Program>();
 });
+
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -46,6 +50,7 @@ builder.Services.AddScoped<ISalaryHistoryService, SalaryHistoryService>();
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -57,6 +62,7 @@ app.UseCors(x => x
       .AllowAnyMethod()
       .AllowAnyHeader());
 app.UseMiddleware<JwtMiddleware>();
+
 
 app.UseHttpsRedirection();
 

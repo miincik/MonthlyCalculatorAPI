@@ -1,4 +1,7 @@
-﻿namespace MonthlyCalculatorAPI.Models.Entities
+﻿using MonthlyCalculatorAPI.Models.Entities.Expences;
+using MonthlyCalculatorAPI.Models.Entities.Incomes;
+
+namespace MonthlyCalculatorAPI.Models.Entities
 {
     public class User : IEntity
     {
@@ -9,6 +12,10 @@
         public Account Account { get; set; }
         public int GenderId { get; set; }
         public Gender Gender { get; set; }
+
+        public virtual ICollection<Expence> Expences { get; set; }
+        public virtual ICollection<Salary> Salaries { get; set; }
+
 
     }
 }
