@@ -8,14 +8,14 @@ namespace MonthlyCalculatorAPI.Contexts
     public class MonthlyCalculatorDbContext : DbContext
     {
         public DbSet<User>? Users { get; set; }
-        public DbSet<Account>? Account { get; set; }
-        public DbSet<Gender>? Genders { get; set; }
         public DbSet<Salary>? Salaries { get; set; }
         public DbSet<SalaryType>? SalaryTypes { get; set; }
         public DbSet<SalaryHistory>? SalaryHistories { get; set; }
         public DbSet<Expence>? Expences { get; set; }
         public DbSet<ExpenceType>? ExpenceTypes { get; set; }
         public DbSet<ExpenceHistory>? ExpenceHistories { get; set; }
+        public DbSet<OperationClaim>? OperationClaims { get; set; }
+        public DbSet<UserOperationClaim>? UserOperationClaims { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,25 +25,19 @@ namespace MonthlyCalculatorAPI.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Account>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Email).IsRequired();
-                entity.Property(e => e.Password).IsRequired();
-                entity.Property(e=>e.IsBlocked);
-            });
-            modelBuilder.Entity<Gender>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Name).IsRequired();
-            });
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.Property(e=>e.Email).IsRequired();
+                entity.Property(e => e.PasswordSalt);
+                entity.Property(e => e.PasswordHash);
                 entity.Property(e => e.FirstName).IsRequired();
                 entity.Property(e => e.LastName).IsRequired();
-                entity.HasOne(e => e.Account).WithOne(e=>e.User).HasForeignKey<User>(e=>e.AccountId);
-                entity.HasOne(e => e.Gender).WithOne(e=>e.User).HasForeignKey<User>(e=>e.GenderId);
+            });
+            modelBuilder.Entity<OperationClaim>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired();
             });
             modelBuilder.Entity<Salary>(entity =>
             {
@@ -82,13 +76,6 @@ namespace MonthlyCalculatorAPI.Contexts
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Date);
-            });
-            modelBuilder.Entity<Account>().HasData(
-            new Account
-            {
-                Id = 1,
-                Email = "mustafa.incik@sahabt.com",
-                Password = "123123",
             });
          }
     }

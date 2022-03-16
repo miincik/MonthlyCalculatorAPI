@@ -16,7 +16,7 @@ namespace MonthlyCalculatorAPI.Services.Concrete
 
         public Utilities.Results.IResult Add(User user)
         {
-            var result = _userRepository.Get(e => e.AccountId == user.AccountId);
+            var result = _userRepository.Get(e => e.Email == user.Email);
             if (result == null)
             {
                 _userRepository.Add(user);
@@ -47,6 +47,16 @@ namespace MonthlyCalculatorAPI.Services.Concrete
         public IDataResult<User> GetById(int userId)
         {
             return new SuccessDataResult<User>(_userRepository.Get(e=>e.Id == userId));
+        }
+
+        public IDataResult<User> GetByMail(string email)
+        {
+            return new SuccessDataResult<User>(_userRepository.Get(e=>e.Email == email));
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userRepository.GetClaims(user));
         }
 
         public Utilities.Results.IResult Update(User user)

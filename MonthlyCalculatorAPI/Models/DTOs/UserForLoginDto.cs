@@ -1,7 +1,6 @@
-﻿namespace MonthlyCalculatorAPI.Utilities.Security
+﻿namespace MonthlyCalculatorAPI.Models.DTOs
 {
-
-    public class LoginDTO
+    public class UserForLoginDto
     {
         public string Email { get; set; }
         public string Password { get; set; }

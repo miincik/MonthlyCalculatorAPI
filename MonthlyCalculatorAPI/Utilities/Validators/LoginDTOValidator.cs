@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using MonthlyCalculatorAPI.Models.DTOs;
 using MonthlyCalculatorAPI.Utilities.Security;
 
 namespace MonthlyCalculatorAPI.Utilities.Validators
 {
-    public class LoginDTOValidator : AbstractValidator<LoginDTO>
+    public class LoginDTOValidator : AbstractValidator<UserForLoginDto>
     {
         public LoginDTOValidator()
         {

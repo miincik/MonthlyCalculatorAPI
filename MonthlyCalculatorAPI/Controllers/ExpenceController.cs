@@ -13,9 +13,9 @@ namespace MonthlyCalculatorAPI.Controllers
 
         public ExpenceController(IExpenceService expenceService) :base(expenceService)
         {
-            
+  
         }
-        [Authorize]
+        
         [HttpGet("getall")]
         public IActionResult GetAll()
         {

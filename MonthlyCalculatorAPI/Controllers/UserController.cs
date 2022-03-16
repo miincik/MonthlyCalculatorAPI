@@ -17,6 +17,11 @@ namespace MonthlyCalculatorAPI.Controllers
         {
             return base.GetResponseByResultSuccess(base._service.GetAll()); 
         }
+        [HttpGet("getclaims")]
+        public IActionResult GetClaims(User user)
+        {
+            return base.GetResponseByResultSuccess(base._service.GetClaims(user));
+        }
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
