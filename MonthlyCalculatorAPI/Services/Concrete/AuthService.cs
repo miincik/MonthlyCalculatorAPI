@@ -1,6 +1,7 @@
 ﻿using MonthlyCalculatorAPI.Models.DTOs;
 using MonthlyCalculatorAPI.Models.Entities;
 using MonthlyCalculatorAPI.Services.Interfaces;
+using MonthlyCalculatorAPI.Utilities.Logger;
 using MonthlyCalculatorAPI.Utilities.Results;
 using MonthlyCalculatorAPI.Utilities.Security.JWT;
 using IResult = MonthlyCalculatorAPI.Utilities.Results.IResult;
@@ -35,6 +36,7 @@ namespace MonthlyCalculatorAPI.Services.Concrete
             return new SuccessDataResult<User>(user, "Kullanıcı kayıt edildi.");
         }
 
+        [LogAspect(typeof(FileLogger))]
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
