@@ -19,10 +19,10 @@ namespace MonthlyCalculatorAPI.Controllers
         [HttpPost("add")]
         public virtual IActionResult Add(T entity) => GetResponseByResultSuccess(_service.Add(entity));
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public virtual IActionResult Update(T entity) => GetResponseByResultSuccess(_service.Update(entity));
 
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public virtual IActionResult Delete(T entity) => GetResponseByResultSuccess(_service.Delete(entity));
 
         protected IActionResult GetResponseByResultSuccess(IResult result)
